@@ -45,6 +45,7 @@ func main() {
 	if kubeconfig == "" {
 		fmt.Println("kubeconfig is empty. Either set it as a flag or with KUBECONFIG environment variable")
 		flag.PrintDefaults()
+		os.Exit(1)
 	}
 
 	config, err := clientcmd.BuildConfigFromFlags("", kubeconfig)
