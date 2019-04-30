@@ -105,7 +105,7 @@ func main() {
 
 	var (
 		w        = tabwriter.NewWriter(os.Stdout, 0, 4, 2, ' ', tabwriter.TabIndent)
-		totalCpu int64
+		totalCPU int64
 		totalMem int64
 	)
 
@@ -115,11 +115,11 @@ func main() {
 	for _, ns := range namespaces {
 		_, _ = fmt.Fprintf(w, "%s\t%0.3f\t%0.f\n", ns, float64(resources[ns].milliCPU)/1000, float64(resources[ns].mem)/(1024*1024))
 
-		totalCpu += resources[ns].milliCPU
+		totalCPU += resources[ns].milliCPU
 		totalMem += resources[ns].mem
 	}
 
 	_, _ = fmt.Fprintln(w, "\t\t")
-	_, _ = fmt.Fprintf(w, "TOTAL\t%0.3f vCPU\t%0.f MB\n", float64(totalCpu)/1000, float64(totalMem)/(1024*1024))
+	_, _ = fmt.Fprintf(w, "TOTAL\t%0.3f vCPU\t%0.f MB\n", float64(totalCPU)/1000, float64(totalMem)/(1024*1024))
 	_ = w.Flush()
 }
